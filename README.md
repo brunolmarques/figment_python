@@ -22,3 +22,26 @@ how to run the pipeline.
 Output structure is defined in verify.py file which can be used to verify correctness of the result.
 
 Solution should be sent as tar archive on Greenhouse platform (with input data removed to reduce the size)
+
+## Project Structure
+.
+├── .devcontainer
+│   ├── git-aliases.conf
+│   └── devcontainer.json
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── input_data
+│   └── validators_data.json.gz
+├── src
+│   ├── aggregator.py
+│   ├── config.py
+│   ├── logger.py
+│   └── utils.py
+├── tests
+│   └── test_aggregator.py
+├── Makefile
+├── README.md
+├── requirements.txt
+└── verify.py
+
