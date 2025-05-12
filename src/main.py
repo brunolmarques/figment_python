@@ -14,7 +14,7 @@ def main():
     try:
         # Read and convert data to DataFrame
         logger.info(f"Reading input data from {INPUT_PATH}")
-        df = jsonl_to_dataframe(batch_size=1000)
+        df = jsonl_to_dataframe(batch_size=10000)
         logger.info(f"Loaded {len(df)} records")
 
         # Compute block statistics

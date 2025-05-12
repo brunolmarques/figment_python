@@ -2,7 +2,7 @@ from pathlib import Path
 
 LOG_LEVEL = "INFO"
 LOG_DIR = Path("logs")
-INPUT_PATH  = Path("input_data/validators_data.json")
+INPUT_PATH  = Path("input_data/validators_data.jsonl.gz")
 OUTPUT_DIR  = Path("output")
 BLOCK_FILES = {
     "balance": OUTPUT_DIR / "balance_block.json",

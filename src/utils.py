@@ -2,6 +2,7 @@ import json
 import gzip
 from typing import Any, Dict, Iterator
 from pathlib import Path
+import polars as pl
 
 def load_json(path: str) -> Any:
     with open(path, "r") as f:
@@ -40,12 +41,9 @@ def read_validators_data(batch_size: int = 1000) -> Iterator[list[Dict]]:
     """
     data_path = Path("input_data/validators_data.jsonl.gz")
     batch = []
-    
+
     for record in read_jsonl_gz(data_path):
         batch.append(record)
         if len(batch) >= batch_size:
             yield batch
             batch = []
-    
-    if batch:  # Yield any remaining records
-        yield batch

@@ -1,28 +1,50 @@
+import subprocess, tempfile
 import polars as pl
 from typing import Dict, Any, List
-from src.utils import read_validators_data
 
+# constants in Gwei
+MAX_EFFECTIVE = 32_000_000_000
+INCREMENT     =  1_000_000_000
 
-def jsonl_to_dataframe(batch_size: int = 1000) -> pl.DataFrame:
+def load_validators(path: str) -> pl.DataFrame:
     """
-    Convert JSONL data to Polars DataFrame.
-    Args:
-        batch_size: Number of records to process at once
-    Returns:
-        Polars DataFrame containing all validator data
+    Loads a newline-delimited JSON (.json.gz) of Ethereum validators
+    in parallel using Polars' scan_json API.
     """
-    # Initialize empty list to store DataFrames
-    dfs: List[pl.DataFrame] = []
-    
-    # Process data in batches
-    for batch in read_validators_data(batch_size):
-        # Convert batch to DataFrame
-        df = pl.DataFrame(batch)
-        dfs.append(df)
-    
-    # Concatenate all DataFrames
-    return pl.concat(dfs)
+    # decompress with pigz (much faster than gzip) into a temp file
+    with tempfile.NamedTemporaryFile(suffix=".ndjson", delete=False) as tmp:
+        subprocess.run(["pigz", "-dc", path], stdout=tmp, check=True)
+        tmp_path = tmp.name
 
+        # now scan lazily (parallel) from the decompressed NDJSON
+        return (
+            pl.scan_ndjson(path)
+            .with_columns([
+                pl.col("index").cast(pl.Int64),
+                pl.col("balance").cast(pl.Float64),
+                pl.col("status").cast(pl.Utf8),
+                pl.col("validator").cast(pl.Utf8),
+                pl.col("block_number").cast(pl.Int64),
+            ])
+            .collect()  # triggers parallel execution
+        )
+
+
+def with_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    Adds a column `effective_balance` to `df` by:
+      1. capping each `balance` at 32 ETH (32e9 Gwei),
+      2. flooring to the nearest 1 ETH (1e9 Gwei) increment,
+      3. leaving other columns untouched.
+    """
+    return df.with_columns([
+        (
+            pl.col("balance")
+              .clip_max(MAX_EFFECTIVE)         # cap at 32 ETH
+              .floor_div(INCREMENT)            # how many whole ETH
+              * INCREMENT                      # back to Gwei
+        ).alias("effective_balance")
+    ])
 
 def block_balance(df: pl.DataFrame) -> pl.DataFrame:
     """
@@ -40,9 +62,11 @@ def block_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
     Sum validator effective balances per block.
     """
     return (
-        df
-        .group_by("block_number")
-        .agg(pl.col("effective_balance").sum().alias("total_effective_balance"))
+        with_effective_balance(df)
+        .groupby("block_number")
+        .agg(
+            pl.sum("effective_balance").alias("effective_balance")
+        )
     )
 
 
@@ -52,7 +76,7 @@ def block_slashed_count(df: pl.DataFrame) -> pl.DataFrame:
     """
     return (
         df
-        .filter(pl.col("slashed") == 1)
+        .filter(pl.col("status") == "exited_slashed")
         .group_by("block_number")
         .agg(pl.len().alias("slashed_count"))
     )
