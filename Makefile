@@ -24,6 +24,10 @@ test-cov:
 show-data:
 	python3 -m scripts.display_data
 
+# Validate the output of the main script
+validate:
+	python3 -m scripts.validate_output
+
 # Default target
 help:
 	@echo "Available commands:"
@@ -33,3 +37,4 @@ help:
 	@echo "  make test     - Run tests with verbose output"
 	@echo "  make test-cov - Run tests with coverage report"
 	@echo "  make run      - Run the main script"
+	@echo "  make validate - Validate the output of the main script"

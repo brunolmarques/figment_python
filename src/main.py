@@ -38,7 +38,7 @@ def main():
 
         # Save totals
         for metric, file_path in TOTAL_FILES.items():
-            metric_total = totals[metric]
+            metric_total = {metric: totals[metric]}
             save_json(metric_total, file_path)
             logger.info(f"Saved {metric} total to {file_path}")
 

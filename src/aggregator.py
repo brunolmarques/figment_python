@@ -25,15 +25,14 @@ def with_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
     """
     Adds a column `effective_balance` to `df` by:
       1. capping each `balance` at 32 ETH (32e9 Gwei),
-      2. flooring to the nearest 1 ETH (1e9 Gwei) increment,
+      2. rounding to the nearest 1 ETH (1e9 Gwei) increment,
       3. leaving other columns untouched.
     """
     return df.with_columns([
         (
             pl.col("balance")
               .clip(None, MAX_EFFECTIVE)         # cap at 32 ETH
-              .floordiv(INCREMENT)            # how many whole ETH
-              * INCREMENT                      # back to Gwei
+              .round(INCREMENT)                  # round to nearest 1 ETH
         ).alias("effective_balance")
     ])
 
@@ -67,7 +66,7 @@ def block_slashed_count(df: pl.DataFrame) -> pl.DataFrame:
     """
     return (
         df
-        .filter(pl.col("status") == "exited_slashed")
+        .filter(pl.col("status").is_in(["exited_slashed", "active_slashed"]))
         .group_by("block_number")
         .agg(pl.len().alias("slashed_count"))
     )
@@ -95,14 +94,13 @@ def compute_block_stats(lazy_df: pl.LazyFrame) -> Dict[str, Dict[str, Any]]:
         lazy_df
         .group_by("block_number")
         .agg([
-            pl.col("balance").sum().alias("total_balance"),
+            pl.col("balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}")).alias("total_balance"),
             (pl.col("balance")
                .clip(None, MAX_EFFECTIVE)
-               .floordiv(INCREMENT)
-               * INCREMENT
-            ).sum().alias("total_effective_balance"),
+               .round(INCREMENT)                 # round to nearest 1 ETH
+            ).sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}")).alias("total_effective_balance"),
             pl.col("status")
-              .filter(pl.col("status") == "exited_slashed")
+              .filter(pl.col("status").is_in(["exited_slashed", "active_slashed"]))
               .len()
               .alias("slashed_count"),
             pl.col("status")
@@ -119,8 +117,8 @@ def compute_block_stats(lazy_df: pl.LazyFrame) -> Dict[str, Dict[str, Any]]:
 
         # base metrics
         block_data = {
-            "balance":               row["total_balance"],
-            "effective_balance":     row["total_effective_balance"],
+            "balance":               row["total_balance"],  
+            "effective_balance":     row["total_effective_balance"],  
             "slashed":               int(row["slashed_count"]),
         }
 

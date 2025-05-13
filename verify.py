@@ -21,8 +21,8 @@ with open('output/effective_balance_block.json', 'r') as file:
     assert effective_balance_block["8271487"] == 2.9186053e+16
     assert effective_balance_block["8171487"] == 2.9106549e+16
     assert effective_balance_block["8071487"] == 2.8724682e+16
-    assert effective_balance_block["7971487"] == 2.8666282e+16
-
+    assert effective_balance_block["7971487"] == 2.8666282e+16 
+                                            
 with open('output/balance_block.json', 'r') as file:
     balance_block = json.load(file)
     assert balance_block["9871487"] == 3.43612521e+16
