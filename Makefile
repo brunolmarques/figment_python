@@ -10,7 +10,7 @@ lint-fix:
 
 # Run the main script
 run:
-	python -m src
+	python3 -m src.main
 
 # Run tests
 test:
@@ -22,7 +22,7 @@ test-cov:
 
 # Run the display_data.py script
 show-data:
-	python display_data.py $(ARGS)
+	python3 -m scripts.display_data
 
 # Default target
 help:

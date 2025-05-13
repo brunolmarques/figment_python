@@ -2,7 +2,6 @@ import json
 import gzip
 from typing import Any, Dict, Iterator
 from pathlib import Path
-import polars as pl
 
 def load_json(path: str) -> Any:
     with open(path, "r") as f:

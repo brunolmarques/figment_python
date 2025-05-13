@@ -3,7 +3,7 @@ from src.config import (
     BLOCK_FILES, TOTAL_FILES
 )
 from src.logger import init_logger, logger
-from src.aggregator import jsonl_to_dataframe, compute_block_stats, compute_totals
+from src.aggregator import load_validators, compute_block_stats, compute_totals
 from src.utils import save_json
 
 def main():
@@ -12,14 +12,14 @@ def main():
     logger.info("Starting data processing")
 
     try:
-        # Read and convert data to DataFrame
+        # Read data as LazyFrame for memory-efficient processing
         logger.info(f"Reading input data from {INPUT_PATH}")
-        df = jsonl_to_dataframe(batch_size=10000)
-        logger.info(f"Loaded {len(df)} records")
+        lazy_df = load_validators(INPUT_PATH)
+        logger.info("Data loaded as LazyFrame")
 
-        # Compute block statistics
+        # Process data using lazy evaluation
         logger.info("Computing block statistics")
-        block_stats = compute_block_stats(df)
+        block_stats = compute_block_stats(lazy_df)
         logger.info(f"Processed {len(block_stats)} blocks")
 
         # Compute totals

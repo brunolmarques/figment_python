@@ -6,3 +6,316 @@
 2025-05-12 23:14:03 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.json
 2025-05-12 23:18:14 | INFO     | __main__:main:12 - Starting data processing
 2025-05-12 23:18:14 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.json
+2025-05-13 00:24:13 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:24:13 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:28:43 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:28:43 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:32:21 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:32:21 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:32:21 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 00:32:21 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 00:32:21 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/workspaces/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x7f2471a0c180>
+
+> File "/workspaces/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x7F2469A0A750>
+                  └ <function compute_block_stats at 0x7f2470fc2c00>
+
+  File "/workspaces/python_project/src/aggregator.py", line 107, in compute_block_stats
+    .clip_max(MAX_EFFECTIVE)
+              └ 32000000000
+
+AttributeError: 'Expr' object has no attribute 'clip_max'
+2025-05-13 00:32:47 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:32:47 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:32:47 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 00:32:47 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 00:32:47 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/workspaces/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x7f09bbac7d80>
+
+> File "/workspaces/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x7F09B3B1A810>
+                  └ <function compute_block_stats at 0x7f09bb5eec00>
+
+  File "/workspaces/python_project/src/aggregator.py", line 107, in compute_block_stats
+    .clip(upper=MAX_EFFECTIVE)  # Use clip instead of clip_max
+                └ 32000000000
+
+TypeError: Expr.clip() got an unexpected keyword argument 'upper'
+2025-05-13 00:35:34 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:35:34 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:35:34 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 00:35:34 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 00:35:34 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/workspaces/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x7f0abdac7d80>
+
+> File "/workspaces/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x7F0AB5B0E090>
+                  └ <function compute_block_stats at 0x7f0abd5fec00>
+
+  File "/workspaces/python_project/src/aggregator.py", line 108, in compute_block_stats
+    .floor_div(INCREMENT)
+               └ 1000000000
+
+AttributeError: 'Expr' object has no attribute 'floor_div'
+2025-05-13 00:36:12 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 00:36:12 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 00:36:12 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 00:36:12 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 17:46:48 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 17:46:48 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 17:46:48 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 17:46:48 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 17:52:33 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x106c2f380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x108634910>
+                  └ <function compute_block_stats at 0x108606020>
+
+  File "/Users/bruno/Programming/figment/python_project/src/aggregator.py", line 132, in compute_block_stats
+    block_data[status] = int(count)
+    │          │             └ 'count'
+    │          └ 'status'
+    └ {'balance': 3.2492376263053596e+16, 'effective_balance': 3.2427797e+16, 'slashed': 0}
+
+ValueError: invalid literal for int() with base 10: 'count'
+2025-05-12 18:04:58 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:04:58 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:04:58 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:04:58 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:04:58 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x1015bf380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x102EEFED0>
+                  └ <function compute_block_stats at 0x102f53a60>
+
+  File "/Users/bruno/Programming/figment/python_project/src/aggregator.py", line 100, in compute_block_stats
+    .clip_max(MAX_EFFECTIVE)
+              └ 32000000000
+
+AttributeError: 'Expr' object has no attribute 'clip_max'. Did you mean: 'cum_max'?
+2025-05-12 18:06:09 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:06:09 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:06:09 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:06:09 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:12:07 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x10c39b380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 22, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x10DCCBED0>
+                  └ <function compute_block_stats at 0x10dd2fa60>
+
+  File "/Users/bruno/Programming/figment/python_project/src/aggregator.py", line 130, in compute_block_stats
+    block_data[rec["status"]] = int(rec["counts"])
+    │          │                    └ {'status': 'active_ongoing', 'count': 1027537}
+    │          └ {'status': 'active_ongoing', 'count': 1027537}
+    └ {'balance': 3.331732791936799e+16, 'effective_balance': 3.3254327e+16, 'slashed': 6}
+
+KeyError: 'counts'
+2025-05-12 18:17:42 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:17:42 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:17:42 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:17:42 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:23:44 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 18:23:44 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 18:23:44 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 18:23:44 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 18:23:44 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x108987380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 35, in main
+    metric_data = {block: stats[metric] for block, stats in block_stats.items()}
+                                │                           │           └ <method 'items' of 'dict' objects>
+                                │                           └ {'9771487': {'balance': 3.4151208919689636e+16, 'effective_balance': 3.4087339e+16, 'slashed': 1, 'withdrawal_done': 481235, ...
+                                └ 'effective'
+
+KeyError: 'effective'
+2025-05-12 18:32:31 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:32:31 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:32:31 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:32:31 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:37:49 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 18:37:49 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 18:37:49 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 18:37:49 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 18:37:49 | INFO     | __main__:main:37 - Saved effective block statistics to output/effective_balance_block.json
+2025-05-12 18:37:49 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 18:37:49 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x10c41f380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 35, in main
+    metric_data = {block: stats[metric] for block, stats in block_stats.items()}
+                                │                           │           └ <method 'items' of 'dict' objects>
+                                │                           └ {'9471487': {'balance': 3.331732791936799e+16, 'effective_balance': 3.3254327e+16, 'effective': 3.3254327e+16, 'slashed': 6, ...
+                                └ 'status'
+
+KeyError: 'status'
+2025-05-12 18:41:23 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:41:23 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:41:23 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:41:23 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:46:37 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 18:46:37 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 18:46:37 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x10c0e3380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 27, in main
+    totals = compute_totals(block_stats)
+             │              └ {'9471487': {'balance': 3.331732791936799e+16, 'effective_balance': 3.3254327e+16, 'effective': 3.3254327e+16, 'slashed': 6, ...
+             └ <function compute_totals at 0x10da6bb00>
+
+  File "/Users/bruno/Programming/figment/python_project/src/aggregator.py", line 156, in compute_totals
+    status_totals[k] = status_totals.get(k, 0) + v
+    │             │    │             │   │       └ {'exited_unslashed': 1232, 'exited_slashed': 6, 'withdrawal_done': 439708, 'pending_queued': 455, 'pending_initialized': 122,...
+    │             │    │             │   └ 'status'
+    │             │    │             └ <method 'get' of 'dict' objects>
+    │             │    └ {'effective': 3.3254327e+16}
+    │             └ 'status'
+    └ {'effective': 3.3254327e+16}
+
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+2025-05-12 18:49:52 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:49:52 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:49:52 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:49:52 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 18:54:27 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 18:54:27 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 18:54:27 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 18:54:27 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 18:54:27 | INFO     | __main__:main:37 - Saved effective block statistics to output/effective_balance_block.json
+2025-05-12 18:54:27 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 18:54:27 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 18:54:27 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 18:54:27 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x101013380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 41, in main
+    metric_total = totals[metric]
+                   │      └ 'effective'
+                   └ {'balance': 6.384186359125912e+17, 'effective_balance': 6.37074915e+17, 'slashed': 196, 'exited_unslashed': 33259, 'active_ex...
+
+KeyError: 'effective'
+2025-05-12 18:57:56 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 18:57:56 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 18:57:56 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 18:57:56 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 19:03:00 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 19:03:00 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 19:03:00 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 19:03:00 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 19:03:00 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-12 19:03:00 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 19:03:00 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 19:03:00 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 19:03:00 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-12 19:03:00 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-12 19:03:00 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x1031cf380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 41, in main
+    metric_total = totals[metric]
+                   │      └ 'status'
+                   └ {'balance': 6.384186359125912e+17, 'effective_balance': 6.37074915e+17, 'slashed': 196, 'exited_slashed': 196, 'active_exitin...
+
+KeyError: 'status'
+2025-05-12 19:05:44 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 19:05:44 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 19:05:44 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 19:05:44 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 19:10:45 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 19:10:45 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 19:10:45 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 19:10:45 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 19:10:45 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-12 19:10:45 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 19:10:45 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 19:10:45 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 19:10:45 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-12 19:10:45 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-12 19:10:45 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-12 19:10:45 | INFO     | __main__:main:45 - Data processing completed successfully

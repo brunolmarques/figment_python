@@ -1,33 +1,24 @@
-import subprocess, tempfile
 import polars as pl
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 # constants in Gwei
 MAX_EFFECTIVE = 32_000_000_000
 INCREMENT     =  1_000_000_000
 
-def load_validators(path: str) -> pl.DataFrame:
+def load_validators(path: str) -> pl.LazyFrame:
     """
-    Loads a newline-delimited JSON (.json.gz) of Ethereum validators
-    in parallel using Polars' scan_json API.
+    Load validators data as a LazyFrame for memory-efficient processing.
     """
-    # decompress with pigz (much faster than gzip) into a temp file
-    with tempfile.NamedTemporaryFile(suffix=".ndjson", delete=False) as tmp:
-        subprocess.run(["pigz", "-dc", path], stdout=tmp, check=True)
-        tmp_path = tmp.name
-
-        # now scan lazily (parallel) from the decompressed NDJSON
-        return (
-            pl.scan_ndjson(path)
-            .with_columns([
-                pl.col("index").cast(pl.Int64),
-                pl.col("balance").cast(pl.Float64),
-                pl.col("status").cast(pl.Utf8),
-                pl.col("validator").cast(pl.Utf8),
-                pl.col("block_number").cast(pl.Int64),
-            ])
-            .collect()  # triggers parallel execution
-        )
+    return (
+        pl.scan_ndjson(path)
+        .with_columns([
+            pl.col("index").cast(pl.Int64),
+            pl.col("balance").cast(pl.Float64),
+            pl.col("status").cast(pl.Utf8),
+            pl.col("validator").cast(pl.Utf8),
+            pl.col("block_number").cast(pl.Int64),
+        ])
+    )
 
 
 def with_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
@@ -40,8 +31,8 @@ def with_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
     return df.with_columns([
         (
             pl.col("balance")
-              .clip_max(MAX_EFFECTIVE)         # cap at 32 ETH
-              .floor_div(INCREMENT)            # how many whole ETH
+              .clip(None, MAX_EFFECTIVE)         # cap at 32 ETH
+              .floordiv(INCREMENT)            # how many whole ETH
               * INCREMENT                      # back to Gwei
         ).alias("effective_balance")
     ])
@@ -63,7 +54,7 @@ def block_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
     """
     return (
         with_effective_balance(df)
-        .groupby("block_number")
+        .group_by("block_number")
         .agg(
             pl.sum("effective_balance").alias("effective_balance")
         )
@@ -99,40 +90,51 @@ def block_status_counts(df: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def compute_block_stats(df: pl.DataFrame) -> Dict[str, Dict[str, Any]]:
-    """
-    Compute all per-block statistics and return a nested dict:
-    { block_number: { balance, effective_balance, slashed, <status_counts> } }
-    """
-    bal_df = block_balance(df)
-    eff_df = block_effective_balance(df)
-    sl_df = block_slashed_count(df)
-    st_df = block_status_counts(df)
-
-    # Left join all metrics on block_number
+def compute_block_stats(lazy_df: pl.LazyFrame) -> Dict[str, Dict[str, Any]]:
     merged = (
-        bal_df
-        .join(eff_df, on="block_number")
-        .join(sl_df, on="block_number", how="left")
-        .join(st_df, on="block_number", how="left")
-        .fill_null(0)
+        lazy_df
+        .group_by("block_number")
+        .agg([
+            pl.col("balance").sum().alias("total_balance"),
+            (pl.col("balance")
+               .clip(None, MAX_EFFECTIVE)
+               .floordiv(INCREMENT)
+               * INCREMENT
+            ).sum().alias("total_effective_balance"),
+            pl.col("status")
+              .filter(pl.col("status") == "exited_slashed")
+              .len()
+              .alias("slashed_count"),
+            pl.col("status")
+              .value_counts()
+              .alias("status_counts"),
+        ])
+        .collect(engine="streaming")
     )
 
-    # Convert to nested dictionary
     result: Dict[str, Dict[str, Any]] = {}
     for row in merged.iter_rows(named=True):
         blk = str(row["block_number"])
-        # extract metrics
+        status_counts = row["status_counts"]  # this is a Python list of structs/dicts
+
+        # base metrics
         block_data = {
-            "balance": row["total_balance"],
-            "effective_balance": row["total_effective_balance"],
-            "slashed": int(row.get("slashed_count", 0)),
+            "balance":               row["total_balance"],
+            "effective_balance":     row["total_effective_balance"],
+            "slashed":               int(row["slashed_count"]),
         }
-        # include status counts (all other keys)
-        status_keys = set(row.keys()) - {"block_number", "total_balance", "total_effective_balance", "slashed_count"}
-        for key in status_keys:
-            block_data[key] = int(row[key])
+
+        # build a nested status map instead of flattening
+        status_map: Dict[str,int] = {}
+        for rec in status_counts:
+            name  = rec.get("status")
+            count = rec.get("count")
+            if name is not None and count is not None:
+                status_map[name] = int(count)
+        block_data["status"] = status_map
+        
         result[blk] = block_data
+        
     return result
 
 
@@ -141,20 +143,22 @@ def compute_totals(blocks: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
     Sum totals across all blocks. Returns a flat dict with keys:
     balance, effective_balance, slashed, plus aggregated status counts.
     """
-    total_balance = sum(b["balance"] for b in blocks.values())
-    total_effective = sum(b["effective_balance"] for b in blocks.values())
-    total_slashed = sum(b["slashed"] for b in blocks.values())
+    total_balance   = sum(b["balance"]            for b in blocks.values())
+    total_effective = sum(b["effective_balance"]  for b in blocks.values())
+    total_slashed   = sum(b["slashed"]            for b in blocks.values())
 
     status_totals: Dict[str, int] = {}
+
+    # Only aggregate the nested status maps
+    status_totals: Dict[str, int] = {}
     for b in blocks.values():
-        for k, v in b.items():
-            if k in ("balance", "effective_balance", "slashed"):  # skip numeric metrics
-                continue
-            status_totals[k] = status_totals.get(k, 0) + v
+        status_map = b.get("status", {})
+        for name, count in status_map.items():
+            status_totals[name] = status_totals.get(name, 0) + count
 
     return {
-        "balance": total_balance,
+        "balance":           total_balance,
         "effective_balance": total_effective,
-        "slashed": total_slashed,
-        **status_totals,
+        "slashed":           total_slashed,
+        "status":            status_totals,
     }
