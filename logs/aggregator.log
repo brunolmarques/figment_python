@@ -387,3 +387,267 @@ KeyError: 'status'
 2025-05-12 22:27:36 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
 2025-05-12 22:27:36 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
 2025-05-12 22:27:36 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-12 22:52:43 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 22:52:43 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 22:52:43 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 22:52:43 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 22:57:49 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 22:57:49 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 22:57:49 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 22:57:49 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 22:57:49 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-12 22:57:49 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 22:57:49 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 22:57:49 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 22:57:49 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-12 22:57:49 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-12 22:57:49 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-12 22:57:49 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-12 23:04:47 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 23:04:47 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 23:04:47 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 23:04:47 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 23:09:59 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 23:09:59 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 23:09:59 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 23:09:59 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 23:09:59 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-12 23:09:59 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 23:09:59 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 23:09:59 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 23:09:59 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-12 23:09:59 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-12 23:09:59 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-12 23:09:59 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-12 23:26:02 | INFO     | __main__:main:12 - Starting data processing
+2025-05-12 23:26:02 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-12 23:26:02 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-12 23:26:02 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-12 23:31:04 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-12 23:31:04 | INFO     | __main__:main:26 - Computing totals
+2025-05-12 23:31:04 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-12 23:31:04 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-12 23:31:04 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-12 23:31:04 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-12 23:31:04 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-12 23:31:04 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-12 23:31:04 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-12 23:31:04 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-12 23:31:04 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-12 23:31:04 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-13 17:06:49 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 17:06:49 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 17:06:49 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 17:06:49 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 17:13:15 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-13 17:13:15 | INFO     | __main__:main:26 - Computing totals
+2025-05-13 17:13:16 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-13 17:13:16 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-13 17:13:16 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 17:13:16 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 17:13:16 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-13 17:13:16 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-13 17:13:16 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 17:13:16 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-13 17:13:16 | ERROR    | __main__:main:48 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 52, in <module>
+    main()
+    └ <function main at 0x10f26b380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 41, in main
+    metric_total = {metric: totals[metric]}
+                    │       │      └ 'status'
+                    │       └ {'balance': 6.384186359125911e+17, 'effective_balance': 6.371043279489274e+17, 'slashed': 33457, 'withdrawal_done': 6918992, ...
+                    └ 'status'
+
+KeyError: 'status'
+2025-05-13 17:15:19 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 17:15:19 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 17:15:19 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 17:15:19 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 17:21:39 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-13 17:21:39 | INFO     | __main__:main:26 - Computing totals
+2025-05-13 17:21:39 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-13 17:21:39 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-13 17:21:39 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 17:21:39 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 17:21:39 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-13 17:21:39 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-13 17:21:39 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 17:21:39 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-13 17:21:39 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-13 17:21:39 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-13 17:42:44 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 17:42:44 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 17:42:44 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 17:42:44 | INFO     | __main__:main:21 - Computing block statistics
+2025-05-13 17:49:47 | INFO     | __main__:main:23 - Processed 20 blocks
+2025-05-13 17:49:47 | INFO     | __main__:main:26 - Computing totals
+2025-05-13 17:49:47 | INFO     | __main__:main:28 - Totals computed successfully
+2025-05-13 17:49:47 | INFO     | __main__:main:37 - Saved balance block statistics to output/balance_block.json
+2025-05-13 17:49:47 | INFO     | __main__:main:37 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 17:49:47 | INFO     | __main__:main:37 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 17:49:47 | INFO     | __main__:main:37 - Saved status block statistics to output/status_block.json
+2025-05-13 17:49:47 | INFO     | __main__:main:43 - Saved balance total to output/balance_total.json
+2025-05-13 17:49:47 | INFO     | __main__:main:43 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 17:49:47 | INFO     | __main__:main:43 - Saved slashed total to output/slashed_total.json
+2025-05-13 17:49:47 | INFO     | __main__:main:43 - Saved status total to output/status_total.json
+2025-05-13 17:49:47 | INFO     | __main__:main:45 - Data processing completed successfully
+2025-05-13 17:55:56 | INFO     | __main__:main:12 - Starting data processing
+2025-05-13 17:55:56 | INFO     | __main__:main:16 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 17:55:56 | INFO     | __main__:main:18 - Data loaded as LazyFrame
+2025-05-13 17:55:56 | ERROR    | __main__:main:55 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 59, in <module>
+    main()
+    └ <function main at 0x106807b00>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 21, in main
+    print(f"active_slashed_total: {lazy_df.filter(pl.col('status') == 'active_slashed').count()}")
+                                   │       └ <function LazyFrame.filter at 0x107f0e660>
+                                   └ <LazyFrame at 0x10813BED0>
+
+NameError: name 'pl' is not defined
+2025-05-13 17:56:27 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 17:56:27 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 17:56:27 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 17:57:48 | INFO     | __main__:main:29 - Computing block statistics
+2025-05-13 18:01:27 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 18:01:27 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 18:01:27 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 18:11:04 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 18:11:04 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 18:11:04 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 18:18:06 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 18:18:06 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 18:18:06 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 18:18:06 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 18:23:29 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 18:23:29 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 18:23:30 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 18:23:30 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 18:23:30 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 18:23:30 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 18:23:30 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 18:23:30 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 18:23:30 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 18:23:30 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 18:23:30 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 18:23:30 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-13 18:39:03 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 18:39:03 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 18:39:03 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 18:39:03 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 18:44:36 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 18:44:36 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 18:44:36 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 18:44:36 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 18:44:36 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 18:44:36 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 18:44:36 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 18:44:36 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 18:44:36 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 18:44:36 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 18:44:36 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 18:44:36 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-13 18:48:33 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 18:48:33 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 18:48:33 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 18:48:33 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 18:54:46 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 18:54:46 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 18:54:46 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 18:54:46 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 18:54:46 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 18:54:46 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 18:54:46 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 18:54:46 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 18:54:46 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 18:54:46 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 18:54:46 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 18:54:46 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-13 19:11:33 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 19:11:33 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 19:11:33 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 19:11:33 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 19:17:26 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 19:17:27 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 19:17:27 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 19:17:27 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 19:17:27 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 19:17:27 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 19:17:27 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 19:17:27 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 19:17:27 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 19:17:27 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 19:17:27 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 19:17:27 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-13 19:42:32 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 19:42:32 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 19:42:32 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 19:42:32 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 19:42:32 | ERROR    | __main__:main:49 - Error during data processing
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/Users/bruno/Programming/figment/python_project/src/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x10327f380>
+
+> File "/Users/bruno/Programming/figment/python_project/src/main.py", line 23, in main
+    block_stats = compute_block_stats(lazy_df)
+                  │                   └ <LazyFrame at 0x104BA3ED0>
+                  └ <function compute_block_stats at 0x10407e520>
+
+  File "/Users/bruno/Programming/figment/python_project/src/aggregator.py", line 46, in compute_block_stats
+    pl.let(
+    └ <module 'polars' from '/usr/local/lib/python3.13/site-packages/polars/__init__.py'>
+
+  File "/usr/local/lib/python3.13/site-packages/polars/__init__.py", line 470, in __getattr__
+    raise AttributeError(msg)
+                         └ "module 'polars' has no attribute 'let'"
+
+AttributeError: module 'polars' has no attribute 'let'. Did you mean: 'len'?
+2025-05-13 19:43:48 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 19:43:48 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 19:43:48 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 19:43:48 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 19:53:34 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 19:53:34 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 19:53:34 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 19:53:34 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 19:53:34 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 19:53:34 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 19:53:34 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 19:53:34 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 19:53:34 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 19:53:34 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 19:53:34 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 19:53:34 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-13 20:00:58 | INFO     | __main__:main:13 - Starting data processing
+2025-05-13 20:00:58 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-13 20:00:58 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-13 20:00:58 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-13 20:06:58 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-13 20:06:58 | INFO     | __main__:main:27 - Computing totals
+2025-05-13 20:06:58 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-13 20:06:58 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-13 20:06:58 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-13 20:06:58 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-13 20:06:58 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-13 20:06:58 | INFO     | __main__:main:46 - Data processing completed successfully

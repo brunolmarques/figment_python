@@ -105,28 +105,52 @@ def check_assertions(assertions):
                 assertion.error = f"Failed to load {json_path}: {e}"
                 assertion.passed = False
                 continue
-        data = json_cache[assertion.json_file]
+        
+        data_to_check = json_cache[assertion.json_file]
+        # If the file is status_total.json, navigate into the 'status' sub-dictionary
+        if assertion.json_file == "status_total.json" and "status" in data_to_check:
+            data_to_check = data_to_check["status"]
+            
         try:
-            value = data
+            value = data_to_check
             for key in assertion.key_chain:
                 value = value[key]
             assertion.actual_value = value
             assertion.passed = (value == assertion.expected_value)
+        except KeyError as e:
+            keys_in_dict = list(value.keys()) if isinstance(value, dict) else "N/A (not a dict)"
+            assertion.error = f"Key error accessing '{e.args[0]}'. Available keys: {keys_in_dict}"
+            assertion.passed = False
         except Exception as e:
-            assertion.error = f"Key error: {e}"
+            assertion.error = f"Error accessing data: {e}"
             assertion.passed = False
 
 def main():
     assertions = extract_assertions_from_verify()
     check_assertions(assertions)
-    passed = sum(1 for a in assertions if a.passed)
-    failed = sum(1 for a in assertions if not a.passed)
-    for a in assertions:
-        status = "PASS" if a.passed else "FAIL"
-        logger.info(f"[{status}] {a.json_file} {a.key_chain} == {a.expected_value} (actual: {a.actual_value}) at line {a.line}")
-        if a.error:
-            logger.error(f"    Error: {a.error}")
-    logger.info(f"\nSummary: {passed} passed, {failed} failed, {len(assertions)} total.")
+    
+    passed_assertions = [a for a in assertions if a.passed]
+    failed_assertions = [a for a in assertions if not a.passed]
+
+    logger.info("\n--- PASSED Assertions ---")
+    if passed_assertions:
+        for a in passed_assertions:
+            logger.info(f"[PASS] {a.json_file} {a.key_chain} == {a.expected_value} (actual: {a.actual_value}) at line {a.line}")
+    else:
+        logger.info("No assertions passed.")
+
+    logger.info("\n--- FAILED Assertions ---")
+    if failed_assertions:
+        for a in failed_assertions:
+            logger.info(f"[FAIL] {a.json_file} {a.key_chain} == {a.expected_value} (actual: {a.actual_value}) at line {a.line}")
+            if a.error:
+                logger.error(f"    Error: {a.error}")
+    else:
+        logger.info("No assertions failed.")
+
+    total_passed = len(passed_assertions)
+    total_failed = len(failed_assertions)
+    logger.info(f"\nSummary: {total_passed} passed, {total_failed} failed, {len(assertions)} total.")
 
 if __name__ == "__main__":
     main()

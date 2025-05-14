@@ -5,6 +5,7 @@ from src.config import (
 from src.logger import init_logger, logger
 from src.aggregator import load_validators, compute_block_stats, compute_totals
 from src.utils import save_json
+import polars as pl
 
 def main():
     # Initialize logger
@@ -16,7 +17,7 @@ def main():
         logger.info(f"Reading input data from {INPUT_PATH}")
         lazy_df = load_validators(INPUT_PATH)
         logger.info("Data loaded as LazyFrame")
-
+        
         # Process data using lazy evaluation
         logger.info("Computing block statistics")
         block_stats = compute_block_stats(lazy_df)

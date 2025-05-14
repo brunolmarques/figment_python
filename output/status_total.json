@@ -1,13 +1,13 @@
 {
   "status": {
-    "exited_unslashed": 33259,
-    "pending_queued": 76370,
     "withdrawal_done": 6918992,
+    "active_slashed": 2,
+    "exited_unslashed": 33259,
+    "active_ongoing": 19703723,
+    "active_exiting": 8079,
+    "pending_queued": 76370,
     "withdrawal_possible": 87762,
     "pending_initialized": 9308,
-    "active_exiting": 8079,
-    "exited_slashed": 196,
-    "active_ongoing": 19703723,
-    "active_slashed": 2
+    "exited_slashed": 196
   }
 }
