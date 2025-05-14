@@ -5,7 +5,6 @@ from src.config import (
 from src.logger import init_logger, logger
 from src.aggregator import load_validators, compute_block_stats, compute_totals
 from src.utils import save_json
-import polars as pl
 
 def main():
     # Initialize logger

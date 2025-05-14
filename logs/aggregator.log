@@ -651,3 +651,19 @@ AttributeError: module 'polars' has no attribute 'let'. Did you mean: 'len'?
 2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
 2025-05-13 20:06:58 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
 2025-05-13 20:06:58 | INFO     | __main__:main:46 - Data processing completed successfully
+2025-05-15 18:20:03 | INFO     | __main__:main:13 - Starting data processing
+2025-05-15 18:20:03 | INFO     | __main__:main:17 - Reading input data from input_data/validators_data.jsonl.gz
+2025-05-15 18:20:03 | INFO     | __main__:main:19 - Data loaded as LazyFrame
+2025-05-15 18:20:03 | INFO     | __main__:main:22 - Computing block statistics
+2025-05-15 18:25:49 | INFO     | __main__:main:24 - Processed 20 blocks
+2025-05-15 18:25:49 | INFO     | __main__:main:27 - Computing totals
+2025-05-15 18:25:49 | INFO     | __main__:main:29 - Totals computed successfully
+2025-05-15 18:25:49 | INFO     | __main__:main:38 - Saved balance block statistics to output/balance_block.json
+2025-05-15 18:25:49 | INFO     | __main__:main:38 - Saved effective_balance block statistics to output/effective_balance_block.json
+2025-05-15 18:25:49 | INFO     | __main__:main:38 - Saved slashed block statistics to output/slashed_block.json
+2025-05-15 18:25:49 | INFO     | __main__:main:38 - Saved status block statistics to output/status_block.json
+2025-05-15 18:25:49 | INFO     | __main__:main:44 - Saved balance total to output/balance_total.json
+2025-05-15 18:25:49 | INFO     | __main__:main:44 - Saved effective_balance total to output/effective_balance_total.json
+2025-05-15 18:25:49 | INFO     | __main__:main:44 - Saved slashed total to output/slashed_total.json
+2025-05-15 18:25:49 | INFO     | __main__:main:44 - Saved status total to output/status_total.json
+2025-05-15 18:25:49 | INFO     | __main__:main:46 - Data processing completed successfully

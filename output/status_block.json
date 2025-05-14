@@ -1,25 +1,14 @@
 {
-  "8371487": {
-    "withdrawal_done": 253352,
+  "9771487": {
+    "withdrawal_done": 481235,
     "active_slashed": 0,
-    "exited_unslashed": 1232,
-    "active_ongoing": 926515,
-    "active_exiting": 10,
-    "pending_queued": 2156,
-    "withdrawal_possible": 4123,
-    "pending_initialized": 935,
-    "exited_slashed": 8
-  },
-  "8671487": {
-    "withdrawal_done": 309494,
-    "active_slashed": 0,
-    "exited_unslashed": 1927,
-    "active_ongoing": 977095,
-    "active_exiting": 138,
-    "pending_queued": 3048,
-    "withdrawal_possible": 5355,
-    "pending_initialized": 104,
-    "exited_slashed": 12
+    "exited_unslashed": 374,
+    "active_ongoing": 1062332,
+    "active_exiting": 565,
+    "pending_queued": 0,
+    "withdrawal_possible": 2000,
+    "pending_initialized": 22,
+    "exited_slashed": 1
   },
   "9171487": {
     "withdrawal_done": 394947,
@@ -32,16 +21,16 @@
     "pending_initialized": 200,
     "exited_slashed": 0
   },
-  "9771487": {
-    "withdrawal_done": 481235,
+  "8671487": {
+    "withdrawal_done": 309494,
     "active_slashed": 0,
-    "exited_unslashed": 374,
-    "active_ongoing": 1062332,
-    "active_exiting": 565,
-    "pending_queued": 0,
-    "withdrawal_possible": 2000,
-    "pending_initialized": 22,
-    "exited_slashed": 1
+    "exited_unslashed": 1927,
+    "active_ongoing": 977095,
+    "active_exiting": 138,
+    "pending_queued": 3048,
+    "withdrawal_possible": 5355,
+    "pending_initialized": 104,
+    "exited_slashed": 12
   },
   "9471487": {
     "withdrawal_done": 439708,
@@ -54,26 +43,15 @@
     "pending_initialized": 122,
     "exited_slashed": 6
   },
-  "8071487": {
-    "withdrawal_done": 199414,
+  "8371487": {
+    "withdrawal_done": 253352,
     "active_slashed": 0,
-    "exited_unslashed": 1048,
-    "active_ongoing": 894701,
-    "active_exiting": 31,
-    "pending_queued": 0,
-    "withdrawal_possible": 1854,
-    "pending_initialized": 474,
-    "exited_slashed": 6
-  },
-  "8871487": {
-    "withdrawal_done": 352601,
-    "active_slashed": 0,
-    "exited_unslashed": 1875,
-    "active_ongoing": 984262,
-    "active_exiting": 41,
-    "pending_queued": 21973,
-    "withdrawal_possible": 5234,
-    "pending_initialized": 228,
+    "exited_unslashed": 1232,
+    "active_ongoing": 926515,
+    "active_exiting": 10,
+    "pending_queued": 2156,
+    "withdrawal_possible": 4123,
+    "pending_initialized": 935,
     "exited_slashed": 8
   },
   "9371487": {
@@ -87,16 +65,16 @@
     "pending_initialized": 170,
     "exited_slashed": 4
   },
-  "8571487": {
-    "withdrawal_done": 281948,
+  "8071487": {
+    "withdrawal_done": 199414,
     "active_slashed": 0,
-    "exited_unslashed": 2323,
-    "active_ongoing": 978782,
-    "active_exiting": 9,
+    "exited_unslashed": 1048,
+    "active_ongoing": 894701,
+    "active_exiting": 31,
     "pending_queued": 0,
-    "withdrawal_possible": 4911,
-    "pending_initialized": 79,
-    "exited_slashed": 11
+    "withdrawal_possible": 1854,
+    "pending_initialized": 474,
+    "exited_slashed": 6
   },
   "9671487": {
     "withdrawal_done": 464874,
@@ -109,27 +87,27 @@
     "pending_initialized": 191,
     "exited_slashed": 2
   },
-  "9071487": {
-    "withdrawal_done": 374124,
+  "8571487": {
+    "withdrawal_done": 281948,
     "active_slashed": 0,
-    "exited_unslashed": 2050,
-    "active_ongoing": 1013960,
-    "active_exiting": 1,
+    "exited_unslashed": 2323,
+    "active_ongoing": 978782,
+    "active_exiting": 9,
     "pending_queued": 0,
-    "withdrawal_possible": 1770,
-    "pending_initialized": 364,
-    "exited_slashed": 1
+    "withdrawal_possible": 4911,
+    "pending_initialized": 79,
+    "exited_slashed": 11
   },
-  "7971487": {
-    "withdrawal_done": 178721,
+  "8871487": {
+    "withdrawal_done": 352601,
     "active_slashed": 0,
-    "exited_unslashed": 1253,
-    "active_ongoing": 889011,
-    "active_exiting": 1,
-    "pending_queued": 0,
-    "withdrawal_possible": 5463,
-    "pending_initialized": 92,
-    "exited_slashed": 106
+    "exited_unslashed": 1875,
+    "active_ongoing": 984262,
+    "active_exiting": 41,
+    "pending_queued": 21973,
+    "withdrawal_possible": 5234,
+    "pending_initialized": 228,
+    "exited_slashed": 8
   },
   "8271487": {
     "withdrawal_done": 235091,
@@ -142,16 +120,16 @@
     "pending_initialized": 468,
     "exited_slashed": 6
   },
-  "8771487": {
-    "withdrawal_done": 332937,
+  "7971487": {
+    "withdrawal_done": 178721,
     "active_slashed": 0,
-    "exited_unslashed": 3294,
-    "active_ongoing": 977812,
-    "active_exiting": 0,
-    "pending_queued": 14102,
-    "withdrawal_possible": 4974,
-    "pending_initialized": 648,
-    "exited_slashed": 4
+    "exited_unslashed": 1253,
+    "active_ongoing": 889011,
+    "active_exiting": 1,
+    "pending_queued": 0,
+    "withdrawal_possible": 5463,
+    "pending_initialized": 92,
+    "exited_slashed": 106
   },
   "9871487": {
     "withdrawal_done": 493118,
@@ -175,27 +153,27 @@
     "pending_initialized": 113,
     "exited_slashed": 3
   },
-  "8171487": {
-    "withdrawal_done": 211317,
-    "active_slashed": 2,
-    "exited_unslashed": 3328,
-    "active_ongoing": 891980,
-    "active_exiting": 5040,
-    "pending_queued": 655,
-    "withdrawal_possible": 8574,
-    "pending_initialized": 297,
-    "exited_slashed": 0
-  },
-  "9271487": {
-    "withdrawal_done": 407061,
+  "9071487": {
+    "withdrawal_done": 374124,
     "active_slashed": 0,
-    "exited_unslashed": 1245,
-    "active_ongoing": 1019913,
-    "active_exiting": 109,
-    "pending_queued": 3668,
-    "withdrawal_possible": 3926,
-    "pending_initialized": 3374,
-    "exited_slashed": 2
+    "exited_unslashed": 2050,
+    "active_ongoing": 1013960,
+    "active_exiting": 1,
+    "pending_queued": 0,
+    "withdrawal_possible": 1770,
+    "pending_initialized": 364,
+    "exited_slashed": 1
+  },
+  "8771487": {
+    "withdrawal_done": 332937,
+    "active_slashed": 0,
+    "exited_unslashed": 3294,
+    "active_ongoing": 977812,
+    "active_exiting": 0,
+    "pending_queued": 14102,
+    "withdrawal_possible": 4974,
+    "pending_initialized": 648,
+    "exited_slashed": 4
   },
   "8971487": {
     "withdrawal_done": 364367,
@@ -218,5 +196,27 @@
     "withdrawal_possible": 2866,
     "pending_initialized": 403,
     "exited_slashed": 10
+  },
+  "9271487": {
+    "withdrawal_done": 407061,
+    "active_slashed": 0,
+    "exited_unslashed": 1245,
+    "active_ongoing": 1019913,
+    "active_exiting": 109,
+    "pending_queued": 3668,
+    "withdrawal_possible": 3926,
+    "pending_initialized": 3374,
+    "exited_slashed": 2
+  },
+  "8171487": {
+    "withdrawal_done": 211317,
+    "active_slashed": 2,
+    "exited_unslashed": 3328,
+    "active_ongoing": 891980,
+    "active_exiting": 5040,
+    "pending_queued": 655,
+    "withdrawal_possible": 8574,
+    "pending_initialized": 297,
+    "exited_slashed": 0
   }
 }
