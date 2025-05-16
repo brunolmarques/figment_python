@@ -4,6 +4,21 @@ from typing import Dict, Any
 # constants in Gwei
 MAX_EFFECTIVE = 32_000_000_000
 INCREMENT     =  1_000_000_000
+BUFFER_CONST_GWEI = 0.25  # Buffer of 0.25 ETH in Gwei
+
+# Validator statuses
+VALIDATOR_STATUSES = [
+    "withdrawal_done",
+    "active_slashed",
+    "exited_unslashed",
+    "active_ongoing",
+    "active_exiting",
+    "pending_queued",
+    "withdrawal_possible",
+    "pending_initialized",
+    "exited_slashed"
+]
+
 
 def load_validators(path: str) -> pl.LazyFrame:
     """
@@ -20,89 +35,30 @@ def load_validators(path: str) -> pl.LazyFrame:
         ])
     )
 
-
-def with_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    Adds a column `effective_balance` to `df` by:
-      1. capping each `balance` at 32 ETH (32e9 Gwei),
-      2. rounding to the nearest 1 ETH (1e9 Gwei) increment,
-      3. leaving other columns untouched.
-    """
-    return df.with_columns([
-        (
-            pl.col("balance")
-              .clip(None, MAX_EFFECTIVE)         # cap at 32 ETH
-              .round(INCREMENT)                  # round to nearest 1 ETH
-        ).alias("effective_balance")
-    ])
-
-def block_balance(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    Sum validator balances per block.
-    """
-    return (
-        df
-        .group_by("block_number")
-        .agg(pl.col("balance").sum().alias("total_balance"))
-    )
-
-
-def block_effective_balance(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    Sum validator effective balances per block.
-    """
-    return (
-        with_effective_balance(df)
-        .group_by("block_number")
-        .agg(
-            pl.sum("effective_balance").alias("effective_balance")
-        )
-    )
-
-
-def block_slashed_count(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    Count slashed validators per block.
-    """
-    return (
-        df
-        .filter(pl.col("status").is_in(["exited_slashed", "active_slashed"]))
-        .group_by("block_number")
-        .agg(pl.len().alias("slashed_count"))
-    )
-
-
-def block_status_counts(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    Count validators per status per block, pivoted into columns.
-    """
-    return (
-        df
-        .group_by(["block_number", "status"])
-        .agg(pl.len().alias("count"))
-        .pivot(
-            values="count",
-            index="block_number",
-            on="status",
-        )
-        .fill_null(0)
-    )
-
-
 def compute_block_stats(lazy_df: pl.LazyFrame) -> Dict[str, Dict[str, Any]]:
+    # Chain all operations in a single expression
     merged = (
         lazy_df
+        .with_columns([
+            (
+                (pl.col("balance").clip(upper_bound=MAX_EFFECTIVE) / INCREMENT) # Cap, then divide by INCREMENT
+                .floor()                                                       # Floor to nearest whole number (of INCREMENTs)
+                * INCREMENT                                                    # Multiply back by INCREMENT
+            ).alias("effective_balance")
+        ])
+        # Then group and aggregate
         .group_by("block_number")
         .agg([
-            pl.col("balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}")).alias("total_balance"),
-            (pl.col("balance")
-               .clip(None, MAX_EFFECTIVE)
-               .round(INCREMENT)                 # round to nearest 1 ETH
-            ).sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}")).alias("total_effective_balance"),
+            # Calculate balance with 9 decimal precision
+            pl.col("balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}"), return_dtype=pl.Float64).alias("total_balance"),
+            # Calculate effective balance with 6 decimal precision (scientific notation)
+            pl.col("effective_balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.6e}"), return_dtype=pl.Float64).alias("total_effective_balance"),
+            # Calculate slashed count
             pl.col("status")
-              .filter(pl.col("status").is_in(["exited_slashed", "active_slashed"]))
+              .filter(pl.col("status").str.contains("_slashed"))
               .len()
               .alias("slashed_count"),
+            # Calculate status counts
             pl.col("status")
               .value_counts()
               .alias("status_counts"),
@@ -113,26 +69,25 @@ def compute_block_stats(lazy_df: pl.LazyFrame) -> Dict[str, Dict[str, Any]]:
     result: Dict[str, Dict[str, Any]] = {}
     for row in merged.iter_rows(named=True):
         blk = str(row["block_number"])
-        status_counts = row["status_counts"]  # this is a Python list of structs/dicts
+        status_counts = row["status_counts"]
 
         # base metrics
         block_data = {
             "balance":               row["total_balance"],  
             "effective_balance":     row["total_effective_balance"],  
             "slashed":               int(row["slashed_count"]),
+            "status":               {status: 0 for status in VALIDATOR_STATUSES}
         }
 
-        # build a nested status map instead of flattening
-        status_map: Dict[str,int] = {}
+        # Update with actual counts
         for rec in status_counts:
             name  = rec.get("status")
             count = rec.get("count")
-            if name is not None and count is not None:
-                status_map[name] = int(count)
-        block_data["status"] = status_map
+            if name is not None and count is not None and name in VALIDATOR_STATUSES:
+                block_data["status"][name] = int(count)
         
         result[blk] = block_data
-        
+    
     return result
 
 
@@ -141,22 +96,38 @@ def compute_totals(blocks: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
     Sum totals across all blocks. Returns a flat dict with keys:
     balance, effective_balance, slashed, plus aggregated status counts.
     """
-    total_balance   = sum(b["balance"]            for b in blocks.values())
-    total_effective = sum(b["effective_balance"]  for b in blocks.values())
-    total_slashed   = sum(b["slashed"]            for b in blocks.values())
+    # Convert blocks dict to a Polars DataFrame for efficient aggregation
+    df = pl.DataFrame([
+        {
+            "balance": b["balance"],
+            "effective_balance": b["effective_balance"],
+            "slashed": b["slashed"],
+            **{f"status_{k}": b["status"].get(k, 0) for k in VALIDATOR_STATUSES}
+        }
+        for b in blocks.values()
+    ])
 
-    status_totals: Dict[str, int] = {}
+    # Chain aggregations with proper decimal precision
+    totals = (
+        df
+        .select([
+            pl.col("balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.9e}"), return_dtype=pl.Float64).alias("balance"),
+            pl.col("effective_balance").sum().cast(pl.Float64).map_elements(lambda x: float(f"{x:.6e}"), return_dtype=pl.Float64).alias("effective_balance"),
+            pl.col("slashed").sum().alias("slashed"),
+            *[pl.col(f"status_{status}").sum().alias(status) for status in VALIDATOR_STATUSES]
+        ])
+    ).row(0, named=True)
 
-    # Only aggregate the nested status maps
-    status_totals: Dict[str, int] = {}
-    for b in blocks.values():
-        status_map = b.get("status", {})
-        for name, count in status_map.items():
-            status_totals[name] = status_totals.get(name, 0) + count
+    # Initialize status_counts with all keys from VALIDATOR_STATUSES, default to 0
+    status_counts = {status: 0 for status in VALIDATOR_STATUSES}
+    # Update with values from Polars aggregation if they exist
+    for status_name in VALIDATOR_STATUSES:
+        if status_name in totals:
+            status_counts[status_name] = totals[status_name]
+    
+    other_totals = {k: v for k, v in totals.items() if k not in VALIDATOR_STATUSES}
 
     return {
-        "balance":           total_balance,
-        "effective_balance": total_effective,
-        "slashed":           total_slashed,
-        "status":            status_totals,
+        **other_totals,
+        "status": status_counts
     }
